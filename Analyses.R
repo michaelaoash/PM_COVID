@@ -4,6 +4,15 @@ library("lme4")
 library("glmmTMB")
 library("gamm4")
 
+aggregate_pm_census_cdc_test_beds  <- mutate(aggregate_pm_census_cdc_test_beds,
+medianhousevalue=   median_house_value,
+medhouseholdincome= median_household_income,
+pct_owner_occ=      owner_occupied,
+education=          no_grad,                 
+pct_blk=            blk_pct,                 
+hispanic=           hispanic_pct)
+
+
 # Main
 mode.nb.random.off.main = glmer.nb(Deaths ~ mean_pm25 + factor(q_popdensity)
                                     + scale(poverty) + scale(log(medianhousevalue))
